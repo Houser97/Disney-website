@@ -1,13 +1,19 @@
 import './App.css';
 import Header from './components/header';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <div className='full-height'>
-        <Header />
+    <BrowserRouter basename='/'>
+      <div className="App">
+        <div className='full-height'>
+          <Header />
+          <Routes >
+            <Route path='/'/>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
