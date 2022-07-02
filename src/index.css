@@ -2,10 +2,12 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+  font-family: 'Avenir';
 }
 
 html {
   width: 100%; height: 100%;
+  background-color: rgb(26, 29, 41);
 }
 
 #root{
