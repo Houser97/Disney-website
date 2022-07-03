@@ -18,6 +18,12 @@ const Carousel = () => {
     const [sliders, setSliders] = useState([]);
 
     const slider = useRef([]);
+    const carousel = useRef(null);
+
+    let i = 0;
+    let multiplier = 1;
+    
+    
 
     useEffect(() => {
         setSliders(slider.current.slice(0, movies.length))
@@ -25,15 +31,26 @@ const Carousel = () => {
     }, [])
 
     useEffect(()=>{
-        let i = 0;
         const intervalId = setInterval(()=>{
-            slider.current[i].style.marginLeft = `calc(-${100 * (sliders.length-2)}px - ${30 * (sliders.length-2)}%)`
+            slider.current[0].style.marginLeft = `calc(-100% - 30px)`
+
+            multiplier ++;
+
+            if(i > 1){
+                slider.current[1].style.marginLeft = `calc(-100% - 30px)`
+            }
+
+
+    
+            if(i%2) {
+                carousel.current.appendChild(slider.current[0])
+                slider.current.addEventListener("transitionend", ()=>{
+                    slider.current[1].style.marginLeft = `0px`
+                }, {once: true})
+            }
+            
             i++;
-            if(i > 5) {
-                i = 0;
-                slider.current[i].style.marginLeft = `0px`
-            };
-            console.log(sliders)
+            console.log(slider.current);
         },2000)
 
         return () => {
@@ -43,7 +60,7 @@ const Carousel = () => {
 
     return(
         <div className='carousel-section'>
-            <div className='carousel'>
+            <div className='carousel' ref={carousel}>
                 {movies.map(
                     function iterateMovies(item, iterator){
                         return(
