@@ -46,6 +46,8 @@ export default Carousel;
 
 const CarouselSlick = styled(Slider)`
 
+    box-sizing: border-box;
+
     ul li button:before {
             color:white;
             font-size: 10px
