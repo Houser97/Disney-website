@@ -1,3 +1,15 @@
+.default-header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bolder;
+    z-index: 4;
+}
+
 header {
     width: 100%;
     height: 70px;
@@ -8,6 +20,8 @@ header {
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bolder;
+    z-index: 4;
+    transition: all 0.2s;
 }
 
 .options-header{
