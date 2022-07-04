@@ -1,11 +1,14 @@
 import '../styles/carousel.css';
 import Obiwan from '../images/Obi-wan-poster.webp';
 import Daredevil from '../images/Daredevil.jpg';
-import DrStrange from '../images/Dr-Strange.webp';
-import Moonknight from '../images/Moon-knight.jpg';
-import Defenders from '../images/Defenders.webp';
-import Slider from './slider';
-import { useEffect, useRef, useState } from 'react';
+import DrStrange from '../images/Dr-Strange.jpg';
+import Moonknight from '../images/MoonKnight.webp';
+import Defenders from '../images/Defenders.jpg';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+import SliderCreated from './slider';
+import styled from "styled-components";
 
 const Carousel = () => {
 
@@ -15,63 +18,49 @@ const Carousel = () => {
                     {title: "Moon Knight", image: Moonknight,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
                     {title: "Defenders", image: Defenders,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."}];
 
-    const [sliders, setSliders] = useState([]);
-
-    const slider = useRef([]);
-    const carousel = useRef(null);
-
-    let i = 0;
-    let multiplier = 1;
-    
-    
-
-    useEffect(() => {
-        setSliders(slider.current.slice(0, movies.length))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(()=>{
-        const intervalId = setInterval(()=>{
-            slider.current[0].style.marginLeft = `calc(-100% - 30px)`
-
-            multiplier ++;
-
-            if(i > 1){
-                slider.current[1].style.marginLeft = `calc(-100% - 30px)`
-            }
-
-
-    
-            if(i%2) {
-                carousel.current.appendChild(slider.current[0])
-                slider.current.addEventListener("transitionend", ()=>{
-                    slider.current[1].style.marginLeft = `0px`
-                }, {once: true})
-            }
-            
-            i++;
-            console.log(slider.current);
-        },2000)
-
-        return () => {
-            clearInterval(intervalId);
-        }
-    }, [sliders])
-
+    let settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+    }
+   
     return(
         <div className='carousel-section'>
-            <div className='carousel' ref={carousel}>
+            <CarouselSlick {...settings} className = "carousel">
                 {movies.map(
                     function iterateMovies(item, iterator){
                         return(
-                            <Slider key={iterator} image={item.image} title={item.title} desc = {item.desc}
-                            slider = {slider} iterator = {iterator}/>
+                            <SliderCreated key={iterator} image={item.image} title={item.title} desc = {item.desc}/>
                         )
                     }
                 )}
-            </div>
+            </CarouselSlick>
         </div>
     )
 }
 
 export default Carousel;
+
+const CarouselSlick = styled(Slider)`
+
+    ul li button:before {
+            color:white;
+            font-size: 10px
+    }
+
+    li.slick-active button::before{
+        color:white;
+    }
+
+    .slick-list{
+        overflow: visible;
+    }
+
+    button {
+        z-index: 2;
+    }
+
+`
