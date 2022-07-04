@@ -1,0 +1,30 @@
+.image-category-section {
+    width: 100%; height: 220px;
+    display: flex;
+    align-items: center; justify-content: center;
+}
+
+.image-category-section .images-category-container{
+    width: 92%; height: 90%;
+    display: flex; 
+    align-items: center; justify-content: space-between;
+}
+
+.image-category-section .images-category-container .image-category {
+    height: 130px; width: 200px;
+    border: 3px solid rgb(138, 126, 126);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.image-category .image-png{
+    height: 50px; width: 130px;
+}
+
+.image-category .pixar {
+    height: 30px; width: 130px;
+}
+
+.image-category .disney {
+    color: white;
+}
