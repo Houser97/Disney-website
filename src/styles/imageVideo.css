@@ -1,0 +1,43 @@
+.image-category {
+    border: 3px solid rgb(138, 126, 126);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    cursor: pointer;
+    background-color: #15191f;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-category:hover {
+    transform: scale(1.05);
+    border: 3px solid rgb(231, 228, 228);
+}
+
+.image-category .image-png{
+    height: 50%; width: 62%;
+    z-index: 5;
+}
+
+.image-category .pixar {
+    height: 30px; width: 130px;
+}
+
+.image-category .national{
+    width: 70%;
+    height: 55px;
+}
+
+.video-tag {
+    width: 101%; height: 101%;
+    position: absolute;
+    display: none;
+}
+
+.image-category:hover .video-tag {
+    display: flex;
+}
+
+.image-category:hover .image-png {
+    display: none;
+}

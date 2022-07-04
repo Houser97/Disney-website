@@ -15,7 +15,7 @@ const Header = () => {
                 header.current.style.position = "relative";
                 header.current.style.backgroundColor = "transparent";
             }
-            console.log(document.documentElement.scrollTop)
+            /*console.log(document.documentElement.scrollTop)*/
         })
     }, [])
 
