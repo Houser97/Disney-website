@@ -1,6 +1,6 @@
 import '../styles/slider.css';
 
-const SliderCreated = ({title, image, desc}) => {
+const SliderCreated = ({image}) => {
 
     return(
         <div className='slider' id='slider-created'>

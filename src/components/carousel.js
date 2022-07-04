@@ -13,12 +13,12 @@ import styled from "styled-components";
 
 const Carousel = () => {
 
-    const movies = [{title: "Obi-Wan",   image: Obiwan,      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Daredevil", image: Daredevil,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Dr. Strange 2", image: DrStrange,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Moon Knight", image: Rons,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Defenders", image: Malcolm,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Thor", image: Thor,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."}];
+    const movies = [{image: Obiwan},
+                    {image: Daredevil},
+                    {image: DrStrange},
+                    {image: Rons},
+                    {image: Malcolm},
+                    {image: Thor}];
 
     let settings = {
         dots: true,
@@ -35,7 +35,7 @@ const Carousel = () => {
                 {movies.map(
                     function iterateMovies(item, iterator){
                         return(
-                            <SliderCreated key={iterator} image={item.image} title={item.title} desc = {item.desc}/>
+                            <SliderCreated key={iterator} image={item.image}/>
                         )
                     }
                 )}
