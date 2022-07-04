@@ -1,9 +1,10 @@
 import '../styles/carousel.css';
 import Obiwan from '../images/Obi-wan-poster.webp';
-import Daredevil from '../images/Daredevil.jpg';
-import DrStrange from '../images/Dr-Strange.jpg';
-import Moonknight from '../images/MoonKnight.webp';
-import Defenders from '../images/Defenders.jpg';
+import Daredevil from '../images/Daredevil.png';
+import DrStrange from '../images/DrStrange.png';
+import Rons from '../images/Rons.png';
+import Malcolm from '../images/Malcolm.png';
+import Thor from '../images/Thor.PNG'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
@@ -15,8 +16,9 @@ const Carousel = () => {
     const movies = [{title: "Obi-Wan",   image: Obiwan,      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
                     {title: "Daredevil", image: Daredevil,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
                     {title: "Dr. Strange 2", image: DrStrange,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Moon Knight", image: Moonknight,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
-                    {title: "Defenders", image: Defenders,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."}];
+                    {title: "Moon Knight", image: Rons,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
+                    {title: "Defenders", image: Malcolm,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."},
+                    {title: "Thor", image: Thor,   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus libero ligula, ac ultrices eros sollicitudin pharetra. Mauris vitae convallis massa. Suspendisse potenti."}];
 
     let settings = {
         dots: true,
