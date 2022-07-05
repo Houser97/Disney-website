@@ -15,13 +15,14 @@
     text-align: start;
     display: flex;
     align-items: center; 
+    overflow: visible;
 }
 
 .images-section-movies {
     display: flex; flex-flow: row;
     align-items: center;
     height: 80%; width: 100%;
-    overflow-x: visible;
+    overflow: visible;
 }
 
 #images-section-movies .slick-slider {
@@ -47,10 +48,12 @@
     height: 100%;
     display: flex; align-items: center; justify-content: flex-start;
     text-align: center;
+    overflow: visible;
 }
 
 #images-section-movies .slick-slider .slick-track .slick-slide { /*ESta es cada tarjeta individual en donde
     están las tarjetas creadas. Viene por defecto,*/
     display: flex; align-items: center;
+    overflow: visible;
 }
 
