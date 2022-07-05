@@ -14,20 +14,11 @@
 }
 
 .image-category .image-png{
-    height: 100%; width: 100%;
-}
-
-.image-category .pixar {
-    height: 30px; width: 130px;
-}
-
-.image-category .national{
-    width: 70%;
-    height: 55px;
+    height: 105%; width: 105%;
 }
 
 .video-tag {
-    width: 101%; height: 101%;
+    width: 110%; height: 110%;
     position: absolute;
     display: none;
 }
