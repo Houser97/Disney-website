@@ -2,7 +2,7 @@ import '../styles/movieCarousel.css';
 import MovieCard from './movieCard';
 import Slider from 'react-slick';
 
-const MovieCarousel = ({movies}) => {
+const MovieCarousel = ({movies, title}) => {
 
     const settings = {
         dots: false,
@@ -15,7 +15,7 @@ const MovieCarousel = ({movies}) => {
             
     return(
         <div className='container-movies'>
-            <div className='title-section'>Recommended for you</div>
+            <div className='title-section'>{title}</div>
             <div className='images-section-movies' id='images-section-movies'>
                 <Slider {...settings} className = "slider-section-movies">
                 {
