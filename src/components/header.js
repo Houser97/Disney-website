@@ -10,7 +10,7 @@ const Header = () => {
         window.addEventListener("scroll", (e)=>{      
             if(document.documentElement.scrollTop !== 0){
                 header.current.style.position = "fixed";
-                header.current.style.backgroundColor = "black";
+                header.current.style.backgroundColor = "rgb(14, 16, 26)";
             } else {
                 header.current.style.position = "relative";
                 header.current.style.backgroundColor = "transparent";
