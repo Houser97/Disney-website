@@ -28,9 +28,9 @@ const Carousel = () => {
         slidesToScroll: 1,
         autoplay: true,
     }
-   
+
     return(
-        <div className='carousel-section'>
+        <div className='carousel-section' id='carousel'>
             <CarouselSlick {...settings} className = "carousel">
                 {movies.map(
                     function iterateMovies(item, iterator){
@@ -51,12 +51,12 @@ const CarouselSlick = styled(Slider)`
     box-sizing: border-box;
 
     ul li button:before {
-            color:white;
-            font-size: 10px
+            color: white;
+            font-size: 8px;
     }
 
     li.slick-active button::before{
-        color:white;
+        color: white;
     }
 
     .slick-list{
