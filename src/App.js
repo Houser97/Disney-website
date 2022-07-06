@@ -3,15 +3,22 @@ import Header from './components/header';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './components/home';
 import Footer from './components/footer';
+import movies from './moviesObject';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(()=>{
+    console.log(movies)
+  }, [])
+
   return (
     <BrowserRouter basename='/'>
       <div className="App">
         <div className='full-height'>
           <Header />
           <Routes >
-            <Route path='/' element = {<Home />}/>
+            <Route path='/home' element = {<Home />}/>
           </Routes>
           <Footer />
         </div>

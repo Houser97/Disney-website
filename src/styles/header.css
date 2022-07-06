@@ -75,3 +75,7 @@ header {
 .option:hover .span-style {
     width: 100%;
 }
+
+.link {
+    color: white;
+}
