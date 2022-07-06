@@ -14,7 +14,8 @@
     font-weight: 600;
     text-align: start;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    margin-bottom: 15px; 
 }
 
 .images-section-movies {
