@@ -6,6 +6,7 @@
     cursor: pointer;
     overflow: hidden;
     position: relative;
+    box-shadow: rgb(0, 0, 0) 0px 25px 20px -20px;
 }
 
 .image-category:hover {

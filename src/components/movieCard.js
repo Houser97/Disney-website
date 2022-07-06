@@ -4,6 +4,7 @@ const MovieCard = ({movie}) => {
     const image = movie.image;
     return(
         <div className='movie-card' id='movie-card'>
+            <div className='effect-border'></div>
             <img src= {image} alt = "Daredevil" className='image-movie-card'></img>
         </div>
     )

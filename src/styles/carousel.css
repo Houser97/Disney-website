@@ -3,7 +3,7 @@
     width: 100%;
     height: 330px;
     padding: 20px 0px;
-    overflow: hidden;
+    
 }
 
 .carousel-section .carousel { /*Contenedor que cambiar el ancho y alto en la pantalla,
@@ -25,5 +25,6 @@
 .carousel-section .slick-slider{
     display: inline-block;
     height: 100%;
+    overflow: visible;
 }
 
