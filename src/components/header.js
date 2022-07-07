@@ -27,7 +27,7 @@ const Header = () => {
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
                     </div>
-                    <Link className='link' to = "/home">
+                    <Link className='link' to = "/">
                         <div className='home option'>
                             <div className='svg-option'>
                                 <svg className='svg' viewBox="0 0 24 24">
@@ -55,14 +55,16 @@ const Header = () => {
                         </div>
                         <div className='text-option'>WATCHLIST<span className='span-style'></span></div> 
                     </div>
-                    <div className='originals option'>
-                        <div className='svg-option'>
-                            <svg viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-                            </svg>
+                    <Link className='link' to = "/originals">
+                        <div className='originals option'>
+                            <div className='svg-option'>
+                                <svg viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                                </svg>
+                            </div>
+                            <div className='text-option'>ORIGINALS<span className='span-style'></span></div> 
                         </div>
-                        <div className='text-option'>ORIGINALS<span className='span-style'></span></div> 
-                    </div>
+                    </Link>
                     <div className='movies option'>
                         <div className='svg-option'>
                             <svg viewBox="0 0 24 24">
