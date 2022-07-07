@@ -1,0 +1,10 @@
+.drop-down-menu .options .option {
+    padding: 5px 8px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.drop-down-menu .options .option:hover {
+    background-color: rgba(254, 254, 254, 0.249);
+}
