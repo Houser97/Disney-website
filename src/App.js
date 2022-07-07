@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 function App() {
 
   useEffect(()=>{
-    console.log(movies)
+    /*console.log('movies')*/
   }, [])
 
   return (
