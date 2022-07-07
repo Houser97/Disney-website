@@ -1,0 +1,69 @@
+.moviesAndSeries-section {
+    width: 100%; height: 100%;
+    display: flex; flex-flow: column;
+}
+
+.title-section-placeholder {
+    width: 100%; height: 150px;
+    display: flex;
+}
+
+.title-section-placeholder .title-section-container {
+    width: 100%; height: 150px;
+    display: flex; flex-flow: row;
+    align-items: center; justify-content: flex-start;
+    gap: 30px;
+}
+
+.title-section {
+    color: white; 
+    font-size: 30px;
+}
+
+/* Dropdown menu */
+.drop-down-menu {
+    display: flex; flex-flow: column;
+    align-items: flex-start; gap: 20px;
+    color: white;
+    background-color: transparent;
+    height: 160px;
+    position: relative;
+    top: 60px;
+}
+
+.icon-result {
+    display: flex; flex-flow: row;
+    align-items: center;
+    gap: 10px;
+    background-color: #00000000;
+    background-image: linear-gradient(0deg, #ffffff51 0%, #ffffff3e);
+    padding: 8px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.drop-down-menu .options {
+    display: flex; flex-flow: column;
+    background-color: rgb(33, 32, 34);
+    width: 200px;
+    text-align: start;
+    padding: 20px 0px;
+    border-radius: 5px;
+    border: 1px solid rgb(51, 51, 51);
+}
+
+.drop-down-menu .options .option {
+    padding: 5px 8px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.drop-down-menu .options .option:hover {
+    background-color: rgba(254, 254, 254, 0.249);
+}
+
+/* Arrow Icon */
+.chevron-down {
+    height: 24px; width: 24px;
+}

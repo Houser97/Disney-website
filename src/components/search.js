@@ -28,7 +28,7 @@ const Search = () => {
         <div className='search-section'>
         <div className='search-container'>
             <form className='search-form' onSubmit={handleSubmit}>
-                <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies}></input>
+                <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies} autocomplete = "off"></input>
                 <div className='effect-background'></div>
             </form>
         </div>

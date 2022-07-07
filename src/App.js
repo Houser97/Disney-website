@@ -6,6 +6,7 @@ import Search from './components/search';
 import Footer from './components/footer';
 import { useEffect } from 'react';
 import Originals from './components/originals';
+import MoviesAndSeries from './components/moviesAndSeries';
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
             <Route path='/originals' element = {<Originals />}/>
+            <Route path='/movies' element = {<MoviesAndSeries />}/>
+            <Route path='/series' element = {<MoviesAndSeries />}/>
           </Routes>
           <Footer />
         </div>
