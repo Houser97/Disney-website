@@ -16,6 +16,10 @@ const Search = () => {
         setFilteredMovies(moviesToDisplay)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     useEffect(() => {
         /*console.log(filteredMovies)*/
     }, [])
@@ -23,7 +27,7 @@ const Search = () => {
     return(
         <div className='search-section'>
         <div className='search-container'>
-            <form className='search-form'>
+            <form className='search-form' onSubmit={handleSubmit}>
                 <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies}></input>
                 <div className='effect-background'></div>
             </form>
