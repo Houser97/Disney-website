@@ -78,10 +78,10 @@ const Movies = () => {
 
     return(
         <div className='movies-series-section'>
-            <MovieCarousel movies={recommendedMovies} title = {titleRecommendedSection} />
-            <MovieCarousel movies={marvelMovies} title = {titleMarvelSection} />
-            <MovieCarousel movies={animatedMovies} title = {titleAnimatedMoviesSection} />
-            <MovieCarousel movies={animatedSeries} title = {titleAnimatedSeriesSection} />
+            <MovieCarousel key={"movie-carousel-1"} movies={recommendedMovies} title = {titleRecommendedSection} />
+            <MovieCarousel key={"movie-carousel-2"} movies={marvelMovies} title = {titleMarvelSection} />
+            <MovieCarousel key={"movie-carousel-3"} movies={animatedMovies} title = {titleAnimatedMoviesSection} />
+            <MovieCarousel key={"movie-carousel-4"} movies={animatedSeries} title = {titleAnimatedSeriesSection} />
         </div>
     )
 }

@@ -25,6 +25,15 @@ const DropdownMenu = ({setFilter}) => {
     }
 
     useEffect(() => {
+        optionsRef.current.forEach(option => {
+            /*Se coloca valor por defecto de Dropdown menu al montarse el componente*/
+            if(option.textContent === "ALL MOVIES A-Z"){
+                option.childNodes[0].classList.add("span-effect-selected");
+                option.classList.add("selected-option-dropdown");
+                option.parentNode.parentNode.childNodes[0].childNodes[0].textContent = "ALL MOVIES A-Z";
+            }
+        })
+
         optionsRef.current.forEach(option => 
             option.addEventListener("click", (e) => {
                 clearEffects();
@@ -42,6 +51,7 @@ const DropdownMenu = ({setFilter}) => {
             }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
     return(
         <div className='drop-down-menu-section'>

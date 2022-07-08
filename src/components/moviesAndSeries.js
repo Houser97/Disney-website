@@ -6,13 +6,13 @@ import MovieCard from './movieCard';
 const MoviesAndSeries = ({moviesSeries, titleSection}) => {
 
     const [moviesOrSeries, setMoviesOrSeries] = useState(moviesSeries);
-    const [filter, setFilter] = useState(null);
+    const [filter, setFilter] = useState("ALL MOVIES A-Z");
 
     useEffect(() => {
         if(filter === "ANIMATED"){
-            setMoviesOrSeries(moviesOrSeries.filter(movie => movie.isAnimated ===  true));
+            setMoviesOrSeries(moviesSeries.filter(movie => movie.isAnimated ===  true));
         } else if (filter === "KIDS"){
-            setMoviesOrSeries(moviesOrSeries.filter(movie => movie.isForKids === true))
+            setMoviesOrSeries(moviesSeries.filter(movie => movie.isForKids === true))
         } else if (filter === "ALL MOVIES A-Z") {
             setMoviesOrSeries(moviesSeries)
         }
@@ -32,7 +32,7 @@ const MoviesAndSeries = ({moviesSeries, titleSection}) => {
             <div className='section-cards'>
                 {moviesOrSeries.map(function iterateMovies(movie, iterator){
                     return(
-                        <MovieCard key={`${iterator}-movie-serie`} movie={movie} />
+                        <MovieCard key={`${iterator}-movie-serie-react`} movie={movie} />
                     )
                 })}
             </div>
