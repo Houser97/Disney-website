@@ -10,6 +10,11 @@
     
 }
 
+.originals-placeholder-selected {
+    height: 150px;
+    transition: 0.350s ease-in-out 0s;
+}
+
 .originals-placeholder .originals-title{
     width: 100%; height: 200px;
     color: white;
@@ -18,9 +23,16 @@
     letter-spacing: 16px;
     text-transform: capitalize;
     font-weight: 600;
-    transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    transition: 0.350s ease-in-out 0s;
     z-index: 10;
     background-color: rgb(26, 29, 41);
+    position: relative;
+}
+
+.originals-title-selected {
+    font-size: 30px;
+    position: fixed;
+    transform: 0.250s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 }
 
 .originals-cards-section{
@@ -32,3 +44,4 @@
     gap: 50px;
     justify-content: center;
 }
+

@@ -13,9 +13,20 @@
     display: flex; flex-flow: row;
     align-items: center; justify-content: flex-start;
     gap: 30px;
+    padding-left: 100px;
 }
 
-.title-section {
+.title-section-movies-series {
     color: white; 
-    font-size: 30px;
+    font-size: 60px;
+}
+
+.section-cards {
+    z-index: 1;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 150px));
+    gap: 50px;
+    justify-content: center;
 }

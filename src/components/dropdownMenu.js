@@ -3,7 +3,7 @@ import '../styles/optionDropdownMenu.css';
 import { useEffect, useRef, useState } from 'react';
 import OptionDropdownMenu from './optionDropdownMenu';
 
-const DropdownMenu = () => {
+const DropdownMenu = ({setFilter}) => {
 
     const [options] = useState(["ALL MOVIES A-Z",
                                 "ANIMATED",
@@ -20,7 +20,6 @@ const DropdownMenu = () => {
 
     const toggleDropdown = () => {
         const dropdownDisplay = window.getComputedStyle(dropdownMenu.current).display;
-        console.log(dropdownDisplay);
         if(dropdownDisplay === "none") dropdownMenu.current.style.display = "flex";
         else if(dropdownDisplay === "flex") dropdownMenu.current.style.display = "none";
     }
@@ -33,12 +32,15 @@ const DropdownMenu = () => {
                 spanEffect.classList.add("span-effect-selected")
     
                 e.target.classList.add("selected-option-dropdown") 
-                
+                /* Se obtiene el DIV en donde se muestra el valor del filtro */
                 const resultDiv = e.target.parentNode.parentNode.childNodes[0].childNodes[0];
                 resultDiv.textContent = e.target.childNodes[1].textContent;
-
+                
                 dropdownMenu.current.style.display = "none";
+
+                setFilter(resultDiv.textContent);
             }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(
