@@ -1,9 +1,9 @@
 import '../styles/footer.css';
 import logo from '../images/disney-logo.png';
 
-const Footer = () => {
+const Footer = ({footerRef}) => {
     return(
-        <footer>
+        <footer ref={footerRef}>
             <div className='footer-logo'>
                 <img src={logo} alt = "logo" className='logo-footer'></img>
             </div>

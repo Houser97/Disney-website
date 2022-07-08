@@ -1,0 +1,14 @@
+.log-in-section {
+    height: 100%; width: 100%;
+    display: flex; flex-flow: column;
+    align-items: center;
+}
+
+.form-log-in {
+    width: 40%; height: 40%;
+    display: flex; flex-flow: column;
+}
+
+.form-log-in .input-label-login{
+    display: flex; flex-flow: column;
+}

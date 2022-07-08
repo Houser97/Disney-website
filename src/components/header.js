@@ -3,7 +3,7 @@ import logo from '../images/disney-logo.png';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({headerRef}) => {
 
     const header = useRef(null)
 
@@ -21,7 +21,7 @@ const Header = () => {
     }, [])
 
     return(
-        <div className='default-header'>
+        <div ref = {headerRef} className='default-header'>
             <header ref={header}>
                 <div className='options-header'>
                     <div className='logo'>
@@ -86,9 +86,11 @@ const Header = () => {
                         </div>
                     </Link>
                 </div>
-                <div className='profile'>
-                    Here goes image profile
-                </div>
+                <Link className='link' to = "/login">
+                    <div className='profile'>
+                        Log in
+                    </div>
+                </Link>
             </header>
         </div>
     )
