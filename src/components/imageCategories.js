@@ -31,7 +31,6 @@ const ImageCategories = () => {
             video.addEventListener("mouseleave", () => {
                 video.pause();
             })
-            console.log(video)
         })
         
     }, [])

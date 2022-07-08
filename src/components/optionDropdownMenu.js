@@ -1,9 +1,9 @@
 import '../styles/optionDropdownMenu.css'
 
-const OptionDropdownMenu = ({option}) => {
+const OptionDropdownMenu = ({option, optionRef, spanRef, index}) => {
     return(
-        <div className='option'>
-            <span className='span-effect-option'></span>
+        <div ref={element => optionRef.current[index] = element} className='option'>
+            <span ref={element => spanRef.current[index] = element} className='span-effect-option'></span>
             <div className='option-name'>{option}</div>   
         </div>   
     )

@@ -4,7 +4,8 @@
     color: white;
     background-color: transparent;
     position: relative;
-    top: 70px;
+    top: 50px;
+    height: 160px;
 }
 
 .icon-result {
@@ -24,7 +25,8 @@
 }
 
 .drop-down-menu .options {
-    display: flex; flex-flow: column;
+    display: none; 
+    flex-flow: column;
     background-color: rgb(33, 32, 34);
     width: 200px;
     text-align: start;
@@ -37,3 +39,4 @@
 .chevron-down {
     height: 24px; width: 24px;
 }
+

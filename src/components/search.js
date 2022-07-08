@@ -1,6 +1,6 @@
 import '../styles/search.css';
 import movies from '../moviesObject';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import MovieCard from './movieCard';
 
 const Search = () => {
@@ -20,15 +20,11 @@ const Search = () => {
         e.preventDefault();
     }
 
-    useEffect(() => {
-        /*console.log(filteredMovies)*/
-    }, [])
-
     return(
         <div className='search-section'>
         <div className='search-container'>
             <form className='search-form' onSubmit={handleSubmit}>
-                <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies} autocomplete = "off"></input>
+                <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies} autoComplete = "off"></input>
                 <div className='effect-background'></div>
             </form>
         </div>
