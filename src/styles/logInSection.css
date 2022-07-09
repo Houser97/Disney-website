@@ -5,19 +5,19 @@
     padding-top: 40px;
 }
 
-.form-log-in {
+.form-log-in-sign-up {
     width: 370px; height: 60%;
     display: flex; flex-flow: column;
     align-items: center; justify-content: space-between;
 }
 
-.form-log-in .input-label-login{
+.form-log-in-sign-up .input-label-login{
     display: flex; flex-flow: column;
     align-items: flex-start; justify-content: space-between;
     width: 100%; height: 95px;
 }
 
-.form-log-in .input-label-login input {
+.form-log-in-sign-up .input-label-login input {
     width: 100%; height: 40px;
     outline: none;
     border: 1px solid grey;
@@ -28,7 +28,7 @@
     font-size: 16px;
 }
 
-.form-log-in label {
+.form-log-in-sign-up label {
     color: white;
     font-size: 24px;
     font-weight: 600;
