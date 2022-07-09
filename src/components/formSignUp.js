@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../styles/formSignUp.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,12 +8,39 @@ const FormSignUp = () => {
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
     const pwdSectionRepeat = useRef(null);
+    const errorMessagePwd = useRef(null);
+
+    const [userData, setUserData] = useState([]); 
+
+    useEffect(() => {
+        if(userData.length === 3){
+            const pwd = userData[1];
+            const pwdRepat = userData[2];
+
+            if(pwd !== pwdRepat){
+                errorMessagePwd.current.style.display = "flex";
+            } else {
+                navigate("/");
+            }
+        }
+        console.log(userData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userData])
 
     const handleSubmit = (e) => {
         e.preventDefault();
         e.target.style.marginLeft = "-380px"
         e.target.style.opacity = 0;
-        navigate("/");
+        const formArray = [...e.target];
+        const input = formArray[0].value;
+        setUserData(oldArray => [...oldArray, input]);
+    }
+
+    const handleLastSubmit = (e) => {
+        e.preventDefault();
+        const formArray = [...e.target];
+        const input = formArray[0].value;
+        setUserData(oldArray => [...oldArray, input]);
     }
 
     return(
@@ -39,10 +66,11 @@ const FormSignUp = () => {
                         </div>
                     </form>
 
-                    <form ref={pwdSectionRepeat} className='pdw-section'>
-                        <div className='input-label-login'>
+                    <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handleLastSubmit}>
+                        <div className='input-label-login pwd-repeat'>
                             <label htmlFor='login'>Enter your password</label>
                             <input id='pwdRepeat' className='input-login' type="password" required></input>
+                            <div ref={errorMessagePwd} className='pwds-incorrect'>Passwords do not match</div>
                         </div>
                         <div className='button-login-section'>
                             <button className='button-login'>CONTINUE</button>
