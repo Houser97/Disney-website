@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import '../styles/logInSection.css';
 import Logo from "../images/disney-logo.png";
 import FormLogIn from './formLogIn';
+import FormSignUp from './formSignUp';
 
-const LogInSection = ({headerRef}) => {
+const LogInSection = ({headerRef, formToOpen}) => {
 
 
 
@@ -22,10 +23,7 @@ const LogInSection = ({headerRef}) => {
             <div className='image-log-in'>
                 <img src={Logo} alt = "disney-logo" className='disney-logo-login'></img>
             </div>
-            <FormLogIn />
-            <div className='sign-up-section'>
-                New to Disney+? <div className='signup-link'>Sign up</div>
-            </div>
+            {formToOpen === "1" ? <FormLogIn /> : <FormSignUp />}
         </div>
     )
 }

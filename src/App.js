@@ -37,7 +37,8 @@ function App() {
             <Route path='/originals' element = {<Originals key={"originals-component"} />}/>
             <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} moviesSeries={moviesFiltered} titleSection = {"Movies"} />}/>
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} moviesSeries={seriesFiltered} titleSection = {"Series"} />}/>
-            <Route path='/login' element = {<LogInSection headerRef={header} footerRef = {footer} />} ></Route>
+            <Route path='/login' element = {<LogInSection formToOpen={"1"} key={"logInSection"} headerRef={header} footerRef = {footer} />} ></Route>
+            <Route path='/signup' element = {<LogInSection formToOpen={"2"} key={"signUpSection"} headerRef={header} footerRef = {footer} />} ></Route>
           </Routes>
           <Footer footerRef = {footer} />
         </div>
