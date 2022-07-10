@@ -19,8 +19,8 @@ const FormSignUp = () => {
 
             if(pwd !== pwdRepat){
                 errorMessagePwd.current.style.display = "flex";
-            } else {
-                navigate("/avatar");
+            } else if(pwd === pwdRepat) {
+                pwdSectionRepeat.current.style.marginLeft = "-380px";
             }
         }
         console.log(userData)
@@ -36,11 +36,19 @@ const FormSignUp = () => {
         setUserData(oldArray => [...oldArray, input]);
     }
 
+    const handlePwdSubmit = (e) => {
+        e.preventDefault();
+        const formArray = [...e.target];
+        const input = formArray[0].value;
+        setUserData(oldArray => [...oldArray, input]);
+    }
+
     const handleLastSubmit = (e) => {
         e.preventDefault();
         const formArray = [...e.target];
         const input = formArray[0].value;
         setUserData(oldArray => [...oldArray, input]);
+        navigate("/avatar");
     }
 
     return(
@@ -66,11 +74,21 @@ const FormSignUp = () => {
                         </div>
                     </form>
 
-                    <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handleLastSubmit}>
+                    <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handlePwdSubmit}>
                         <div className='input-label-login pwd-repeat'>
                             <label htmlFor='login'>Enter your password</label>
                             <input id='pwdRepeat' className='input-login' type="password" required></input>
                             <div ref={errorMessagePwd} className='pwds-incorrect'>Passwords do not match</div>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
+
+                    <form className='pdw-section-repeat username' onSubmit={handleLastSubmit}>
+                        <div className='input-label-login username'>
+                            <label htmlFor='username'>Enter new username</label>
+                            <input id='username' className='input-login' type="text" required></input>
                         </div>
                         <div className='button-login-section'>
                             <button className='button-login'>CONTINUE</button>

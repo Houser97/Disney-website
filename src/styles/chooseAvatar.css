@@ -18,4 +18,5 @@
     grid-template-columns: repeat(auto-fit, minmax(230px, 230px));
     grid-template-rows: repeat(auto-fit, minmax(230px, 230px));
     column-gap: 20px; row-gap: 50px;
+    align-items: center;
 }
