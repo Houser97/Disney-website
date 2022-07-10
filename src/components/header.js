@@ -22,7 +22,7 @@ const Header = ({headerRef}) => {
 
     return(
         <div ref = {headerRef} className='default-header'>
-            <header ref={header}>
+            <header className='header' ref={header}>
                 <div className='options-header'>
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>

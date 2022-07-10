@@ -8,4 +8,5 @@
   display: flex;
   flex-flow: column;
   flex: 1;
+  background: url('./images/BackgroundDisney.png') 50%/cover no-repeat fixed;
 }

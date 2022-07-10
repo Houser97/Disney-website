@@ -34,8 +34,12 @@ const Originals = () => {
 
         window.addEventListener("scroll", changeTitle)
 
+        const header = document.querySelector(".header");
+        header.style.backgroundColor = "rgb(26, 29, 41)" 
+
         return () => {
             window.removeEventListener("scroll", changeTitle);
+            header.style.background = "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.125) 30%, rgba(0, 0, 0, 0.25) 46%, rgba(0, 0, 0, 0.4) 61%, rgba(0, 0, 0, 0.553) 75%, rgba(0, 0, 0, 0.694) 88%, rgba(0, 0, 0, 0.8));";
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
