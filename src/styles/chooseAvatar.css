@@ -15,6 +15,7 @@
 
 .avatars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-    grid-template-rows: repeat(auto-fit, minmax(130px, 130px));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 230px));
+    grid-template-rows: repeat(auto-fit, minmax(230px, 230px));
+    column-gap: 20px; row-gap: 50px;
 }
