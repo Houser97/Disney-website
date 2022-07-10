@@ -9,6 +9,7 @@ import Originals from './components/originals';
 import MoviesAndSeries from './components/moviesAndSeries';
 import movies from './moviesObject';
 import LogInSection from './components/logInSection';
+import ChooseAvatar from './components/chooseAvatar';
 
 function App() {
 
@@ -39,8 +40,9 @@ function App() {
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} moviesSeries={seriesFiltered} titleSection = {"Series"} />}/>
             <Route path='/login' element = {<LogInSection formToOpen={"1"} key={"logInSection"} headerRef={header} footerRef = {footer} />} ></Route>
             <Route path='/signup' element = {<LogInSection formToOpen={"2"} key={"signUpSection"} headerRef={header} footerRef = {footer} />} ></Route>
+            <Route path="/avatar" element = {<ChooseAvatar headerRef={header} footerRef ={footer} />} ></Route>
           </Routes>
-          <Footer footerRef = {footer} />
+          <Footer footerRef = {footer}/>
         </div>
       </div>
     </BrowserRouter>

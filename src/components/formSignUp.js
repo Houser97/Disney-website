@@ -20,7 +20,7 @@ const FormSignUp = () => {
             if(pwd !== pwdRepat){
                 errorMessagePwd.current.style.display = "flex";
             } else {
-                navigate("/");
+                navigate("/avatar");
             }
         }
         console.log(userData)
