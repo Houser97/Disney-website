@@ -11,6 +11,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
     const header = useRef(null);
     const setMoviesInWatchList = useContext(userContext)[3];
+    const setUserPictureHeader = useContext(userContext)[5];
+    const setUsernameHeader = useContext(userContext)[6];
 
     const [username, setUserName] = useState(null);
     const [userPicture, setUserPicture] = useState(null); 
@@ -19,6 +21,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
         await signUserOut();
         setUserPicture(null);
         setUserName(null);
+        setUserPictureHeader(null);
+        setUsernameHeader(null);
         setMoviesInWatchList([]);
         console.log(userID);
     }

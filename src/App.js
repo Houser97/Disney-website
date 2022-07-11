@@ -61,6 +61,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moviesInWatchList])
 
+    // Guardar usuarios nuevos //
   useEffect(() => {
     checkIfUserIsLogged(setUserID, userID);
     console.log(userID);
@@ -90,6 +91,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+// Recuperar datos apenas cambie el usuarioID //
   useEffect(() => {
     if(userID !== null){
       const getDataAsync = async() => {
@@ -106,7 +108,8 @@ function App() {
   }
   }, [userID])
 
-  const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList, setShouldRegisterNewUser]
+  const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList, setShouldRegisterNewUser,
+  setUserPictureHeader, setUsernameHeader]
 
   return (
     <BrowserRouter basename='/'>

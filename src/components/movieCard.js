@@ -1,10 +1,15 @@
 import '../styles/movieCard.css';
 import { userContext } from '../App';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, imageFirestore}) => {
 
     const [shouldPlaceCheckedSVG, setShouldPlaceCheckedSVG] = useState("no");
+
+    useEffect(() => {
+        if(imageFirestore !== undefined) setShouldPlaceCheckedSVG("yes");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[imageFirestore])
 
     const toggleSVG = (e) => {
         const imageMovie = e.target.parentNode.childNodes[1].src;
@@ -26,7 +31,31 @@ const MovieCard = ({movie}) => {
     const setMoviesInWatchList = useContext(userContext)[1];
     let moviesInWatchList = useContext(userContext)[2];
 
-    const image = movie.image;
+    let image;
+
+    if(imageFirestore !== undefined){
+        image = imageFirestore;
+    } else {
+        image = movie.image;
+        console.log(imageFirestore)
+    }
+    
+    // Colocar palomita si imagen se encuentra ya en la lista por ver //
+    useEffect(() => {
+       
+            let moviesReference = [];
+            let moviesInWatchListHelper = [...moviesInWatchList];
+            moviesInWatchListHelper.forEach(link => {
+                moviesReference.push(link.slice(21))}
+            )
+            console.log(moviesReference)
+            if(moviesReference.indexOf(image) >= 0){
+                setShouldPlaceCheckedSVG("yes");
+            }
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shouldPlaceCheckedSVG])
+
     return(
         <div className='movie-card' id='movie-card'>
             <div className='effect-border'></div>
