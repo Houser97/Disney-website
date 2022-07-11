@@ -3,6 +3,7 @@ import logo from '../images/disney-logo.png';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { recoverDoc } from '../firebase';
+import { signUserOut } from '../firebase';
 
 
 const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
@@ -11,6 +12,11 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
     const [username, setUserName] = useState(null);
     const [userPicture, setUserPicture] = useState(null); 
+
+    const logOut = () => {
+        signUserOut();
+        setUserPicture(null)
+    }
 
     useEffect(() => {
         if(shouldRender === "yes"){
@@ -115,7 +121,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                         <img src={userPicture} alt ="headerpicture" className='header-picture-profile' ></img>
                     </div>
                     <div className='signOut-user'>
-                        <div className='button-log-out'>
+                        <div className='button-log-out' onClick={logOut}>
                             Log Out
                         </div>
                     </div>

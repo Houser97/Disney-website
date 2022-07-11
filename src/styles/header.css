@@ -113,12 +113,14 @@ header {
 }
 
 .button-log-out{
-    display: none;
+    display: flex;
     border-radius: 5px;
     border: 2px solid rgb(255, 255, 255);
     margin-left: 20px;
     padding: 10px 18px;
+    transition: 100ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
     cursor: pointer;
+    opacity: 0;
 }
 
 .profile-user:hover .signOut-user {
@@ -126,5 +128,6 @@ header {
 }
 
 .profile-user:hover .button-log-out {
-    display: flex;
+    opacity: 1;
+    transition: 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 }
