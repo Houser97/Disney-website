@@ -11,10 +11,25 @@ const Originals = () => {
     const originalsPlaceholder = useRef(null);
 
     const changeTitle = () => {
-        if(document.documentElement.scrollTop === 0){
+        if(document.documentElement.scrollTop !== 0){
+            originalsPlaceholder.current.style.height = "140px";
+            originalsPlaceholder.current.style.transition = "0.250s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s";
+
+            originalsContainer.current.style.fontSize = "30px";
+            originalsContainer.current.style.height = originalsPlaceholder.current.style.height;
+            originalsContainer.current.style.position = "fixed";
+            originalsContainer.current.style.transition = "0.250s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s";
+        } else {
+            originalsPlaceholder.current.style.height = "230px";
+            originalsPlaceholder.current.style.transition = "0.35s ease-in-out 0s";
+
+            originalsContainer.current.style.height = "230px";
+            originalsContainer.current.style.fontSize = "50px";
+            originalsContainer.current.style.position = "relative";
+            originalsContainer.current.style.transition = "0.35s ease-in-out 0s";
             const header = document.querySelector(".header");
             header.style.backgroundColor = "rgb(26, 29, 41)" 
-        } 
+        }
     }
 
     useEffect(()=>{
