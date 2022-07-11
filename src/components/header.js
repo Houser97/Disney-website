@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { recoverDoc } from '../firebase';
 
 
-const Header = ({headerRef, usernameHeader, usernamePicture, userID}) => {
+const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
     const header = useRef(null)
 
@@ -13,16 +13,19 @@ const Header = ({headerRef, usernameHeader, usernamePicture, userID}) => {
     const [userPicture, setUserPicture] = useState(null); 
 
     useEffect(() => {
+        if(shouldRender === "yes"){
                 //Recuperar username y foto de Firebase //
                 if(userID !== null){
                     const getDataAsync = async() => {
-                        const userData = await recoverDoc();
+                        const userData = await recoverDoc(userID);
                         setUserName(userData.image);
                         setUserPicture(userData.username);
                     }
                     getDataAsync();
                 }
-    }, [userID])
+            setShouldRender("no");
+        }
+    })
 
 
     useEffect(() => {

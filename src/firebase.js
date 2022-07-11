@@ -3,7 +3,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { addDoc, collection, doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
 
 export const createUser = async(email, password) => {
 await createUserWithEmailAndPassword(auth, email, password)
@@ -38,6 +39,31 @@ export const logInUser = async(email, password) => {
   });
 }
 
+export const signUserOut = async() => {
+  signOut(auth);
+}
+
+// Logear usuarios miembro //
+
+export const logIn = async(email, password) => {
+  await signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user, "success");
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    console.log(errorCode)
+    const errorMessage = error.message;
+    console.log(errorMessage)
+  });
+}
+
+
+//------------------------------------------//
+
 // Guardar datos del usuario //
 export const addUserData = (userID, image, username) => {
     addDoc(collection(db, "users") , {
@@ -48,8 +74,8 @@ export const addUserData = (userID, image, username) => {
 
 // permite crear un documento con un nombre deseado //
 
-export const setDocument = async(image, username) => {
-  await setDoc(doc(db,"users","prueba"), {
+export const setDocument = async(image, username, userID) => {
+  await setDoc(doc(db,"users", `${userID}`), {
     image,
     username
   })
@@ -57,8 +83,8 @@ export const setDocument = async(image, username) => {
 
 // Recuperar documento en específico //
 
-export const recoverDoc = async() => {
-  const docRef = doc(db ,"users", "prueba");
+export const recoverDoc = async(userID) => {
+  const docRef = doc(db ,"users", `${userID}`);
   const docSnap = await getDoc(docRef);
 
   if(docSnap.exists()){
@@ -69,6 +95,7 @@ export const recoverDoc = async() => {
   }
 
 }
+
 
 
 

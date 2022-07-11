@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/formLogIn.css';
 import { Link } from 'react-router-dom';
+import { logIn } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { checkIfUserIsLogged } from '../App';
 
-const FormLogIn = () => {
+const FormLogIn = ({setUserID, userID}) => {
+
+    let navigate = useNavigate()
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
@@ -11,8 +16,15 @@ const FormLogIn = () => {
 
     useEffect(() => {
         if(userData.length === 2){
-            console.log("Time to check data, log in");
+            const email = userData[0];
+            console.log(email);
+            const pwd = userData[1];
+            console.log(pwd);
+            logIn(email, pwd);
+            checkIfUserIsLogged(setUserID, userID);
+            navigate("/")
         }
+        console.log(userData)
     }, [userData])
 
     const handleSubmit = (e) => {
@@ -21,7 +33,8 @@ const FormLogIn = () => {
         e.target.style.opacity = 0;
         
         const formArray = [...e.target];
-        const input = formArray[1].value;
+        console.log(formArray)
+        const input = formArray[0].value;
 
         setUserData(oldArray => [...oldArray, input]);
     }
@@ -30,9 +43,10 @@ const FormLogIn = () => {
         e.preventDefault();
 
         const formArray = [...e.target];
-        const input = formArray[1].value;
+        const input = formArray[0].value;
 
         setUserData(oldArray => [...oldArray, input]);
+
     }
 
     return (
