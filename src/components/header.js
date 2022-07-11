@@ -6,7 +6,7 @@ import { recoverDoc } from '../firebase';
 import { signUserOut } from '../firebase';
 
 
-const Header = ({headerRef, userID, shouldRender, setShouldRender, isInOriginal}) => {
+const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
     const header = useRef(null)
 

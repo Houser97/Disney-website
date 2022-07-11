@@ -3,12 +3,12 @@ import MovieCard from './movieCard';
 import movies from '../moviesObject';
 import { useEffect, useRef, useState } from 'react';
 
-const Originals = () => {
+const Originals = ({headerRefPlaceholder}) => {
 
     const [originals, setOriginals] = useState(movies)
-
     const originalsContainer = useRef(null);
     const originalsPlaceholder = useRef(null);
+    const header = headerRefPlaceholder.current.childNodes[0];
 
     const changeTitle = () => {
         if(document.documentElement.scrollTop !== 0){
@@ -27,7 +27,7 @@ const Originals = () => {
             originalsContainer.current.style.fontSize = "50px";
             originalsContainer.current.style.position = "relative";
             originalsContainer.current.style.transition = "0.35s ease-in-out 0s";
-            const header = document.querySelector(".header");
+            
             header.style.backgroundColor = "rgb(26, 29, 41)" 
         }
     }
@@ -38,7 +38,6 @@ const Originals = () => {
 
         window.addEventListener("scroll", changeTitle)
 
-        const header = document.querySelector(".header");
         header.style.backgroundColor = "rgb(26, 29, 41)" 
 
 

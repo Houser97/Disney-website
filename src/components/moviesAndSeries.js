@@ -3,19 +3,19 @@ import '../styles/moviesAndSeries.css';
 import DropdownMenu from './dropdownMenu';
 import MovieCard from './movieCard';
 
-const MoviesAndSeries = ({moviesSeries, titleSection}) => {
+const MoviesAndSeries = ({moviesSeries, titleSection, headerRefPlaceholder}) => {
 
     const [moviesOrSeries, setMoviesOrSeries] = useState(moviesSeries);
     const [filter, setFilter] = useState("ALL MOVIES A-Z");
 
     const containerToFix = useRef(null);
+    const header = headerRefPlaceholder.current.childNodes[0];
 
     const fixTitleSection = () => {
         if(document.documentElement.scrollTop !== 0){
             containerToFix.current.style.position = "fixed";
         } else {
             containerToFix.current.style.position = "relative";
-            const header = document.querySelector(".header");
             header.style.backgroundColor = "rgb(26, 29, 41)" 
         }
     }
@@ -33,12 +33,16 @@ const MoviesAndSeries = ({moviesSeries, titleSection}) => {
 
     useEffect(() => {
         window.addEventListener("scroll", fixTitleSection);
-        const header = document.querySelector(".header");
         header.style.backgroundColor = "rgb(26, 29, 41)" 
 
         return () => {
             window.removeEventListener("scroll", fixTitleSection);
+            if(document.documentElement.scrollTop !== 0){
+                header.style.backgroundColor = "rgb(14, 16, 26)";
+            }
+            else {header.style.backgroundColor = "transparent";}
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
