@@ -114,6 +114,11 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                     <div className='profile-picture-header'>
                         <img src={userPicture} alt ="headerpicture" className='header-picture-profile' ></img>
                     </div>
+                    <div className='signOut-user'>
+                        <div className='button-log-out'>
+                            Log Out
+                        </div>
+                    </div>
                 </div>) : (
                 <Link className='link' to = "/login">
                     <div className='log-in-button-header'>
