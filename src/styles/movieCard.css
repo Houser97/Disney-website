@@ -64,3 +64,10 @@
 .add-icon-userID-null {
     display: none;
 }
+
+g,
+circle,
+path, 
+svg {
+    pointer-events: none;
+}

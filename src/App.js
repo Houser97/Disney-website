@@ -14,6 +14,7 @@ import Watchlist from './components/watchlist';
 import { createContext } from 'react';
 import { auth, setDocument } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { recoverDoc } from './firebase';
 
 export const userContext = createContext()
 
@@ -44,7 +45,13 @@ function App() {
 
   const [shouldHeaderRender, setShouldHeaderRender] = useState("no");
 
+  const [moviesInWatchList, setMoviesInWatchList] = useState([]);
+
   const [userID, setUserID] = useState(null);
+
+  useEffect(() => {
+    console.log(moviesInWatchList);
+  }, [moviesInWatchList])
 
   useEffect(() => {
     checkIfUserIsLogged(setUserID, userID);
@@ -53,7 +60,7 @@ function App() {
       if(userPictureHeader !== null && userID !== null){      
         console.log("done")
         /*addUserData(userID, usernameHeader, userPictureHeader);*/
-        await setDocument(usernameHeader, userPictureHeader, userID)
+        await setDocument(userPictureHeader, usernameHeader, userID)
       }
     }
     waitUntilDocSet();
@@ -72,10 +79,25 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    if(userID !== null){
+      const getDataAsync = async() => {
+          const userData = await recoverDoc(userID);
+          setUsernameHeader(userData.username);
+          setUserPictureHeader(userData.image);
+      }
+      getDataAsync();
+  } else {
+    setUsernameHeader(null);
+    setUserPictureHeader(null);
+  }
+  }, [userID])
+
+  const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList]
 
   return (
     <BrowserRouter basename='/'>
-      <userContext.Provider value={userID}>
+      <userContext.Provider value={valueProvider}>
         <div className="App">
           <div className='full-height'>
             <Header headerRef={header} userID = {userID} shouldRender = {shouldHeaderRender} setShouldRender ={setShouldHeaderRender} />

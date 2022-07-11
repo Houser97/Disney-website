@@ -25,8 +25,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                 if(userID !== null){
                     const getDataAsync = async() => {
                         const userData = await recoverDoc(userID);
-                        setUserName(userData.image);
-                        setUserPicture(userData.username);
+                        setUserName(userData.username);
+                        setUserPicture(userData.image);
                     }
                     getDataAsync();
                 }
