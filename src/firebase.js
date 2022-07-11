@@ -74,10 +74,19 @@ export const addUserData = (userID, image, username) => {
 
 // permite crear un documento con un nombre deseado //
 
-export const setDocument = async(image, username, userID) => {
+export const setDocument = async(image, username, userID, movies) => {
   await setDoc(doc(db,"users", `${userID}`), {
     image,
-    username
+    username,
+    movies
+  })
+}
+
+export const setDocumentMovie = async(image, username, userID, movies) => {
+  await setDoc(doc(db,"users", `${userID}`), {
+    image,
+    username,
+    movies
   })
 }
 

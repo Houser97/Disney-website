@@ -15,6 +15,7 @@ import { createContext } from 'react';
 import { auth, setDocument } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { recoverDoc } from './firebase';
+import { setDocumentMovie } from './firebase';
 
 export const userContext = createContext()
 
@@ -42,6 +43,7 @@ function App() {
   const [seriesFiltered, setSeriesFiltered] = useState(movies);
   const [usernameHeader, setUsernameHeader] = useState(null);
   const [userPictureHeader, setUserPictureHeader] = useState(null);
+  const [shouldRegisterNewUser, setShouldRegisterNewUser] = useState("no");
 
   const [shouldHeaderRender, setShouldHeaderRender] = useState("no");
 
@@ -49,8 +51,14 @@ function App() {
 
   const [userID, setUserID] = useState(null);
 
+  // Guardar películas en Firestore //
   useEffect(() => {
     console.log(moviesInWatchList);
+    if(moviesInWatchList.length !== 0){
+      setDocumentMovie(userPictureHeader, usernameHeader, userID, moviesInWatchList)
+    }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moviesInWatchList])
 
   useEffect(() => {
@@ -60,13 +68,16 @@ function App() {
       if(userPictureHeader !== null && userID !== null){      
         console.log("done")
         /*addUserData(userID, usernameHeader, userPictureHeader);*/
-        await setDocument(userPictureHeader, usernameHeader, userID)
+        await setDocument(userPictureHeader, usernameHeader, userID, moviesInWatchList)
       }
     }
-    waitUntilDocSet();
-    setShouldHeaderRender("yes")
+    if(shouldRegisterNewUser === "yes"){
+      waitUntilDocSet();
+      setShouldRegisterNewUser("no");
+    }
+    setShouldHeaderRender("yes");
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userPictureHeader, usernameHeader, userID])
+  }, [userPictureHeader, usernameHeader, userID, shouldRegisterNewUser])
 
   const header = useRef(null);
   const footer = useRef(null)
@@ -85,15 +96,17 @@ function App() {
           const userData = await recoverDoc(userID);
           setUsernameHeader(userData.username);
           setUserPictureHeader(userData.image);
+          setMoviesInWatchList(userData.movies)
       }
       getDataAsync();
   } else {
     setUsernameHeader(null);
     setUserPictureHeader(null);
+    setMoviesInWatchList([])
   }
   }, [userID])
 
-  const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList]
+  const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList, setShouldRegisterNewUser]
 
   return (
     <BrowserRouter basename='/'>

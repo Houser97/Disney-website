@@ -1,21 +1,25 @@
 import '../styles/header.css';
 import logo from '../images/disney-logo.png';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { recoverDoc } from '../firebase';
 import { signUserOut } from '../firebase';
+import { userContext } from '../App';
 
 
 const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
-    const header = useRef(null)
+    const header = useRef(null);
+    const setMoviesInWatchList = useContext(userContext)[3];
 
     const [username, setUserName] = useState(null);
     const [userPicture, setUserPicture] = useState(null); 
 
     const logOut = async () => {
         await signUserOut();
-        setUserPicture(null)
+        setUserPicture(null);
+        setUserName(null);
+        setMoviesInWatchList([]);
         console.log(userID);
     }
 
