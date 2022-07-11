@@ -69,16 +69,16 @@ function App() {
       if(userPictureHeader !== null && userID !== null){      
         console.log("done")
         /*addUserData(userID, usernameHeader, userPictureHeader);*/
-        await setDocument(userPictureHeader, usernameHeader, userID, moviesInWatchList)
+        await setDocument(userPictureHeader, usernameHeader, userID, moviesInWatchList);
+        setShouldRegisterNewUser("no");
       }
     }
     if(shouldRegisterNewUser === "yes"){
       waitUntilDocSet();
-      setShouldRegisterNewUser("no");
     }
     setShouldHeaderRender("yes");
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userPictureHeader, usernameHeader, userID, shouldRegisterNewUser])
+  }, [shouldRegisterNewUser])
 
   const header = useRef(null);
   const footer = useRef(null)
@@ -98,7 +98,8 @@ function App() {
           const userData = await recoverDoc(userID);
           setUsernameHeader(userData.username);
           setUserPictureHeader(userData.image);
-          setMoviesInWatchList(userData.movies)
+          setMoviesInWatchList(userData.movies);
+          setShouldHeaderRender("yes");
       }
       getDataAsync();
   } else {

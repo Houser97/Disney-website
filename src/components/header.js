@@ -24,7 +24,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
         setUserPictureHeader(null);
         setUsernameHeader(null);
         setMoviesInWatchList([]);
-        console.log(userID);
+        setShouldRender("yes");
+        /*console.log(userID);*/
     }
 
     useEffect(() => {
@@ -40,7 +41,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                 }
             setShouldRender("no");
         }
-    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userID, shouldRender, userPicture])
 
 
     useEffect(() => {
@@ -125,7 +127,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                         </div>
                     </Link>
                 </div>
-                {(userPicture !== null) ? (
+                {(userID !== null && username !== null) ? (
                 <div className='profile-user'>
                     <div className='username-header'>{username}</div>
                     <div className='profile-picture-header'>

@@ -1,13 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import {  useEffect, useRef, useState } from 'react';
 import '../styles/formSignUp.css';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../firebase';
-import { userContext } from '../App';
+
 
 const FormSignUp = ({setUsername1}) => {
     let navigate = useNavigate();
-
-    const setShouldRegisterNewUser = useContext(userContext)[3];
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
@@ -55,7 +53,6 @@ const FormSignUp = ({setUsername1}) => {
         const input = formArray[0].value;
         setUsername1(input);
         setUserData(oldArray => [...oldArray, input]);
-        setShouldRegisterNewUser("yes");
         navigate("/avatar");
     }
 

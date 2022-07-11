@@ -37,7 +37,6 @@ const MovieCard = ({movie, imageFirestore}) => {
         image = imageFirestore;
     } else {
         image = movie.image;
-        console.log(imageFirestore)
     }
     
     // Colocar palomita si imagen se encuentra ya en la lista por ver //
@@ -48,13 +47,12 @@ const MovieCard = ({movie, imageFirestore}) => {
             moviesInWatchListHelper.forEach(link => {
                 moviesReference.push(link.slice(21))}
             )
-            console.log(moviesReference)
             if(moviesReference.indexOf(image) >= 0){
                 setShouldPlaceCheckedSVG("yes");
             }
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [shouldPlaceCheckedSVG])
+    }, [shouldPlaceCheckedSVG, moviesInWatchList])
 
     return(
         <div className='movie-card' id='movie-card'>
