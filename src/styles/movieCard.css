@@ -28,3 +28,13 @@
 .image-movie-card { /* imagenes */
     height: 100%; width: 100%;
 }
+
+.add-icon-movieCard{
+    position: absolute;
+    top: 0;
+    background-color: black;
+}
+
+.add-icon-userID-null {
+    display: none;
+}
