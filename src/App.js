@@ -78,7 +78,7 @@ function App() {
           <Routes >
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
-            <Route path='/watchlist' element = {<Watchlist />} ></Route>
+            <Route path='/watchlist' element = {<Watchlist userID={userID} />} ></Route>
             <Route path='/originals' element = {<Originals key={"originals-component"} headerRefPlaceholder = {header}/>}/>
             <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} moviesSeries={moviesFiltered} titleSection = {"Movies"}  headerRefPlaceholder = {header} />} ></Route>
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} moviesSeries={seriesFiltered} titleSection = {"Series"} headerRefPlaceholder = {header} />} ></Route>
