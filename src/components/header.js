@@ -1,11 +1,29 @@
 import '../styles/header.css';
 import logo from '../images/disney-logo.png';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { recoverDoc } from '../firebase';
 
-const Header = ({headerRef}) => {
+
+const Header = ({headerRef, usernameHeader, usernamePicture, userID}) => {
 
     const header = useRef(null)
+
+    const [username, setUserName] = useState(null);
+    const [userPicture, setUserPicture] = useState(null); 
+
+    useEffect(() => {
+                //Recuperar username y foto de Firebase //
+                if(userID !== null){
+                    const getDataAsync = async() => {
+                        const userData = await recoverDoc();
+                        setUserName(userData.image);
+                        setUserPicture(userData.username);
+                    }
+                    getDataAsync();
+                }
+    }, [userID])
+
 
     useEffect(() => {
         window.addEventListener("scroll", (e)=>{      
@@ -18,6 +36,7 @@ const Header = ({headerRef}) => {
             }
             /*console.log(document.documentElement.scrollTop)*/
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(
@@ -86,11 +105,21 @@ const Header = ({headerRef}) => {
                         </div>
                     </Link>
                 </div>
+                {(userPicture !== null) ? (
+                <div className='profile-user'>
+                    <div className='username-header'>{username}</div>
+                    <div className='profile-picture-header'>
+                        <img src={userPicture} alt ="headerpicture" className='header-picture-profile' ></img>
+                    </div>
+                </div>) : (
                 <Link className='link' to = "/login">
-                    <div className='profile'>
+                    <div className='log-in-button-header'>
                         Log in
                     </div>
                 </Link>
+                )}
+
+
             </header>
         </div>
     )

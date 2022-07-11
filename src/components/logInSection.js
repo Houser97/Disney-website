@@ -4,9 +4,7 @@ import Logo from "../images/disney-logo.png";
 import FormLogIn from './formLogIn';
 import FormSignUp from './formSignUp';
 
-const LogInSection = ({headerRef, formToOpen}) => {
-
-
+const LogInSection = ({headerRef, formToOpen, setUsername1}) => {
 
     useEffect(() => {
         headerRef.current.style.display = "none";
@@ -23,7 +21,7 @@ const LogInSection = ({headerRef, formToOpen}) => {
             <div className='image-log-in'>
                 <img src={Logo} alt = "disney-logo" className='disney-logo-login'></img>
             </div>
-            {formToOpen === "1" ? <FormLogIn /> : <FormSignUp />}
+            {formToOpen === "1" ? <FormLogIn /> : <FormSignUp setUsername1 = {setUsername1} />}
         </div>
     )
 }

@@ -2,33 +2,76 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth();
-/*createUserWithEmailAndPassword(auth, email, password)
+export const createUser = async(email, password) => {
+await createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    console.log(user)
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
+    console.log(errorCode)
     const errorMessage = error.message;
+    console.log(errorMessage)
     // ..
   });
+}
 
-  signInWithEmailAndPassword(auth, email, password)
+export const logInUser = async(email, password) => {
+  await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    console.log(user);
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
+    console.log(errorCode)
     const errorMessage = error.message;
-  });*/
-  
+    console.log(errorMessage)
+  });
+}
+
+// Guardar datos del usuario //
+export const addUserData = (userID, image, username) => {
+    addDoc(collection(db, "users") , {
+    image,
+    username
+  });
+}
+
+// permite crear un documento con un nombre deseado //
+
+export const setDocument = async(image, username) => {
+  await setDoc(doc(db,"users","prueba"), {
+    image,
+    username
+  })
+}
+
+// Recuperar documento en específico //
+
+export const recoverDoc = async() => {
+  const docRef = doc(db ,"users", "prueba");
+  const docSnap = await getDoc(docRef);
+
+  if(docSnap.exists()){
+    console.log("document data:", docSnap.data())
+    return docSnap.data();
+  } else {
+    console.log("no such document")
+  }
+
+}
+
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC3KGpY7O-eipsfEuvKwehDBtjqIXxcCL0",
@@ -41,3 +84,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+export const auth = getAuth(app);

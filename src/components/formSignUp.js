@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/formSignUp.css';
 import { useNavigate } from 'react-router-dom';
+import { createUser } from '../firebase';
 
-const FormSignUp = () => {
+const FormSignUp = ({setUsername1}) => {
     let navigate = useNavigate();
 
     const emailSection = useRef(null);
@@ -14,6 +15,7 @@ const FormSignUp = () => {
 
     useEffect(() => {
         if(userData.length === 3){
+            const email = userData[0];
             const pwd = userData[1];
             const pwdRepat = userData[2];
 
@@ -21,6 +23,7 @@ const FormSignUp = () => {
                 errorMessagePwd.current.style.display = "flex";
             } else if(pwd === pwdRepat) {
                 pwdSectionRepeat.current.style.marginLeft = "-380px";
+                createUser(email, pwd);
             }
         }
         console.log(userData)
@@ -47,6 +50,7 @@ const FormSignUp = () => {
         e.preventDefault();
         const formArray = [...e.target];
         const input = formArray[0].value;
+        setUsername1(input);
         setUserData(oldArray => [...oldArray, input]);
         navigate("/avatar");
     }

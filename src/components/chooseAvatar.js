@@ -21,7 +21,7 @@ import stitchAvatar from '../images/avatars/StitchAvatar.png';
 import WandaAvatar from '../images/avatars/WandaAvatar.png';
 import WAvatar from '../images/avatars/WAvatar.png';
 
-const ChooseAvatar = ({headerRef, footerRef}) => {
+const ChooseAvatar = ({headerRef, footerRef, setUserPicture}) => {
 
     const [avatarsImages] = useState([spidermanAvatar, buzzAvatar,
                                       darthAvatar,     drStrangeAvatar,
@@ -54,7 +54,7 @@ const ChooseAvatar = ({headerRef, footerRef}) => {
             <div className='avatars-grid'>
                 {avatarsImages.map(function iterateAvatars(avatar, i){
                     return(
-                        <AvatarCard key={`${i}-avatar-image`} avatarImage = {avatar} />
+                        <AvatarCard key={`${i}-avatar-image`} avatarImage = {avatar} setUserPicture = {setUserPicture} />
                     )
                 })}
             </div>
