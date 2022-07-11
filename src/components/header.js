@@ -6,16 +6,17 @@ import { recoverDoc } from '../firebase';
 import { signUserOut } from '../firebase';
 
 
-const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
+const Header = ({headerRef, userID, shouldRender, setShouldRender, isInOriginal}) => {
 
     const header = useRef(null)
 
     const [username, setUserName] = useState(null);
     const [userPicture, setUserPicture] = useState(null); 
 
-    const logOut = () => {
-        signUserOut();
+    const logOut = async () => {
+        await signUserOut();
         setUserPicture(null)
+        console.log(userID);
     }
 
     useEffect(() => {
