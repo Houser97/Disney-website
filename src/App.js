@@ -10,9 +10,9 @@ import MoviesAndSeries from './components/moviesAndSeries';
 import movies from './moviesObject';
 import LogInSection from './components/logInSection';
 import ChooseAvatar from './components/chooseAvatar';
+import Watchlist from './components/watchlist';
 import { auth, setDocument } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-
 
 async function checkIfUserIsLogged(setUserID, userID){
   onAuthStateChanged(auth, (user) => {
@@ -78,6 +78,7 @@ function App() {
           <Routes >
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
+            <Route path='/watchlist' element = {<Watchlist />} ></Route>
             <Route path='/originals' element = {<Originals key={"originals-component"} headerRefPlaceholder = {header}/>}/>
             <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} moviesSeries={moviesFiltered} titleSection = {"Movies"}  headerRefPlaceholder = {header} />} ></Route>
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} moviesSeries={seriesFiltered} titleSection = {"Series"} headerRefPlaceholder = {header} />} ></Route>

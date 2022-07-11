@@ -76,6 +76,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                             <div className='text-option'>SEARCH<span className='span-style'></span></div> 
                         </div>
                     </Link>
+                    <Link className='link' to = "/watchlist" >
                     <div className='watchlist option'>
                         <div className='svg-option plus'>
                             <svg viewBox="0 0 24 24">
@@ -84,6 +85,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                         </div>
                         <div className='text-option'>WATCHLIST<span className='span-style'></span></div> 
                     </div>
+                    </Link>
                     <Link className='link' to = "/originals">
                         <div className='originals option'>
                             <div className='svg-option'>
