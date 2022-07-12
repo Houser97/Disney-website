@@ -116,7 +116,7 @@ function App() {
   setUserPictureHeader, setUsernameHeader]
 
   return (
-    <BrowserRouter basename='/'>
+    <BrowserRouter basename='Disney-website/'>
       <userContext.Provider value={valueProvider}>
         <div className="App">
           <div className='full-height'>
