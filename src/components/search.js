@@ -28,7 +28,7 @@ const Search = () => {
                 <div className='effect-background'></div>
             </form>
         </div>
-        <div className='filtered-movies'>
+        <div className='filtered-movies' id = 'filtered-movies'>
             {
                 filteredMovies.map(function iterateMovies(movie, iterator){
                     return(

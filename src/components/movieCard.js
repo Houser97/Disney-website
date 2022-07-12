@@ -55,7 +55,7 @@ const MovieCard = ({movie, imageFirestore}) => {
             if(moviesReference.indexOf(image) >= 0){
                 setShouldPlaceCheckedSVG("yes");
             }
-            console.log(moviesReference)
+            //console.log(moviesReference)
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldPlaceCheckedSVG, moviesInWatchList])
