@@ -10,8 +10,9 @@ export const createUser = async(email, password) => {
 await createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
+    // eslint-disable-next-line no-unused-vars
     const user = userCredential.user;
-    console.log(user)
+    //console.log(user)
     // ...
   })
   .catch((error) => {
@@ -27,8 +28,9 @@ export const logInUser = async(email, password) => {
   await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
+    // eslint-disable-next-line no-unused-vars
     const user = userCredential.user;
-    console.log(user);
+    //console.log(user);
     // ...
   })
   .catch((error) => {
@@ -49,8 +51,9 @@ export const logIn = async(email, password) => {
   await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
+    // eslint-disable-next-line no-unused-vars
     const user = userCredential.user;
-    console.log(user, "success");
+    //console.log(user, "success");
     // ...
   })
   .catch((error) => {
@@ -97,10 +100,10 @@ export const recoverDoc = async(userID) => {
   const docSnap = await getDoc(docRef);
 
   if(docSnap.exists()){
-    console.log("document data:", docSnap.data())
+    //console.log("document data:", docSnap.data())
     return docSnap.data();
   } else {
-    console.log("no such document")
+    //console.log("no such document")
   }
 
 }

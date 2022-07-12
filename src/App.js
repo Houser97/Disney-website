@@ -25,13 +25,13 @@ async function checkIfUserIsLogged(setUserID, userID){
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUserID(user.uid)
-        console.log(userID);
-        console.log(`user logged in`);
+        //console.log(userID);
+        //console.log(`user logged in`);
         // ...
       } else {
         // User is signed out
         // ...
-        console.log("no user here")
+        //console.log("no user here")
         setUserID(null)
       }
     })
@@ -53,7 +53,7 @@ function App() {
 
   // Guardar películas en Firestore //
   useEffect(() => {
-    console.log(moviesInWatchList);
+    //console.log(moviesInWatchList);//
     if(moviesInWatchList.length !== 0){
       setDocumentMovie(userPictureHeader, usernameHeader, userID, moviesInWatchList)
     }
@@ -64,10 +64,10 @@ function App() {
     // Guardar usuarios nuevos //
   useEffect(() => {
     checkIfUserIsLogged(setUserID, userID);
-    console.log(userID);
+    //console.log(userID);//
     async function waitUntilDocSet(){
       if(userPictureHeader !== null && userID !== null){      
-        console.log("done")
+        //console.log("done")//
         /*addUserData(userID, usernameHeader, userPictureHeader);*/
         await setDocument(userPictureHeader, usernameHeader, userID, moviesInWatchList);
         setShouldRegisterNewUser("no");
@@ -93,13 +93,16 @@ function App() {
 
 // Recuperar datos apenas cambie el usuarioID //
   useEffect(() => {
-    if(userID !== null){
+    if(userID !== null && shouldRegisterNewUser !== "no"){
       const getDataAsync = async() => {
           const userData = await recoverDoc(userID);
-          setUsernameHeader(userData.username);
-          setUserPictureHeader(userData.image);
-          setMoviesInWatchList(userData.movies);
-          setShouldHeaderRender("yes");
+          if(userData !== null){
+            setUsernameHeader(userData.username);
+            setUserPictureHeader(userData.image);
+            setMoviesInWatchList(userData.movies);
+            // Renderizar Header cuando se recupera la información //
+            setShouldHeaderRender("yes");
+        }
       }
       getDataAsync();
   } else {
@@ -107,7 +110,7 @@ function App() {
     setUserPictureHeader(null);
     setMoviesInWatchList([])
   }
-  }, [userID])
+  }, [userID, shouldRegisterNewUser])
 
   const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList, setShouldRegisterNewUser,
   setUserPictureHeader, setUsernameHeader]
@@ -117,7 +120,7 @@ function App() {
       <userContext.Provider value={valueProvider}>
         <div className="App">
           <div className='full-height'>
-            <Header headerRef={header} userID = {userID} shouldRender = {shouldHeaderRender} setShouldRender ={setShouldHeaderRender} />
+            <Header headerRef={header} userID = {userID} shouldRender = {shouldHeaderRender} setShouldRender ={setShouldHeaderRender} username = {usernameHeader} userPicture = {userPictureHeader} />
             <Routes >
               <Route path='/' element = {<Home />}/>
               <Route path='/search' element = {<Search />}/>

@@ -1,26 +1,21 @@
 import '../styles/header.css';
 import logo from '../images/disney-logo.png';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { recoverDoc } from '../firebase';
 import { signUserOut } from '../firebase';
 import { userContext } from '../App';
 
 
-const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
+const Header = ({headerRef, userID, shouldRender, setShouldRender, username, userPicture}) => {
 
     const header = useRef(null);
-    const setMoviesInWatchList = useContext(userContext)[3];
-    const setUserPictureHeader = useContext(userContext)[5];
-    const setUsernameHeader = useContext(userContext)[6];
-
-    const [username, setUserName] = useState(null);
-    const [userPicture, setUserPicture] = useState(null); 
+    const setMoviesInWatchList = useContext(userContext)[1];
+    const setUserPictureHeader = useContext(userContext)[4];
+    const setUsernameHeader = useContext(userContext)[5];
 
     const logOut = async () => {
         await signUserOut();
-        setUserPicture(null);
-        setUserName(null);
         setUserPictureHeader(null);
         setUsernameHeader(null);
         setMoviesInWatchList([]);
@@ -34,8 +29,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                 if(userID !== null){
                     const getDataAsync = async() => {
                         const userData = await recoverDoc(userID);
-                        setUserName(userData.username);
-                        setUserPicture(userData.image);
+                        setUsernameHeader(userData.username);
+                        setUserPictureHeader(userData.image);
                     }
                     getDataAsync();
                 }
@@ -46,7 +41,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
 
 
     useEffect(() => {
-        window.addEventListener("scroll", (e)=>{      
+        window.addEventListener("scroll", ()=>{      
             if(document.documentElement.scrollTop !== 0){
                 header.current.style.position = "fixed";
                 header.current.style.backgroundColor = "rgb(14, 16, 26)";
@@ -127,7 +122,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender}) => {
                         </div>
                     </Link>
                 </div>
-                {(userID !== null && username !== null) ? (
+                {(userID !== null) ? (
                 <div className='profile-user'>
                     <div className='username-header'>{username}</div>
                     <div className='profile-picture-header'>

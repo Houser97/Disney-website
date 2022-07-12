@@ -22,12 +22,13 @@ const FormSignUp = ({setUsername1}) => {
 
             if(pwd !== pwdRepat){
                 errorMessagePwd.current.style.display = "flex";
+                setUserData([...userData.slice(0, 2)]);
             } else if(pwd === pwdRepat) {
                 pwdSectionRepeat.current.style.marginLeft = "-380px";
                 createUser(email, pwd);
             }
         }
-        console.log(userData)
+        //console.log(userData)//
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userData])
 
@@ -72,7 +73,7 @@ const FormSignUp = ({setUsername1}) => {
                     <form ref={pwdSection} className='pdw-section' onSubmit={handleSubmit}>
                         <div className='input-label-login'>
                             <label htmlFor='login'>Enter your password</label>
-                            <input id='pwd' className='input-login' type="password" required></input>
+                            <input id='pwd' className='input-login' type="password" minLength="6" required></input>
                         </div>
                         <div className='button-login-section'>
                             <button className='button-login'>CONTINUE</button>
@@ -81,7 +82,7 @@ const FormSignUp = ({setUsername1}) => {
 
                     <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handlePwdSubmit}>
                         <div className='input-label-login pwd-repeat'>
-                            <label htmlFor='login'>Enter your password</label>
+                            <label htmlFor='login'>Repeat your password</label>
                             <input id='pwdRepeat' className='input-login' type="password" required></input>
                             <div ref={errorMessagePwd} className='pwds-incorrect'>Passwords do not match</div>
                         </div>

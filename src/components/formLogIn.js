@@ -24,7 +24,7 @@ const FormLogIn = ({setUserID, userID}) => {
             checkIfUserIsLogged(setUserID, userID);
             navigate("/")
         }
-        console.log(userData)
+        //console.log(userData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userData])
 
@@ -34,7 +34,7 @@ const FormLogIn = ({setUserID, userID}) => {
         e.target.style.opacity = 0;
         
         const formArray = [...e.target];
-        console.log(formArray)
+        //console.log(formArray)
         const input = formArray[0].value;
 
         setUserData(oldArray => [...oldArray, input]);
