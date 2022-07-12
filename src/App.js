@@ -48,6 +48,7 @@ function App() {
   const [shouldHeaderRender, setShouldHeaderRender] = useState("no");
 
   const [moviesInWatchList, setMoviesInWatchList] = useState([]);
+  const [URL] = useState(window.window.location.href)
 
   const [userID, setUserID] = useState(null);
 
@@ -93,7 +94,7 @@ function App() {
 
 // Recuperar datos apenas cambie el usuarioID //
   useEffect(() => {
-    if(userID !== null && shouldRegisterNewUser !== "no"){
+    if(userID !== null && shouldRegisterNewUser === "no"){
       const getDataAsync = async() => {
           const userData = await recoverDoc(userID);
           if(userData !== null){
@@ -113,7 +114,7 @@ function App() {
   }, [userID, shouldRegisterNewUser])
 
   const valueProvider = [userID, setMoviesInWatchList, moviesInWatchList, setShouldRegisterNewUser,
-  setUserPictureHeader, setUsernameHeader]
+  setUserPictureHeader, setUsernameHeader, URL]
 
   return (
     <BrowserRouter basename='Disney-website/'>

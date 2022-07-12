@@ -30,6 +30,7 @@ const MovieCard = ({movie, imageFirestore}) => {
     let userID = useContext(userContext)[0];
     const setMoviesInWatchList = useContext(userContext)[1];
     let moviesInWatchList = useContext(userContext)[2];
+    const URL = useContext(userContext)[6];
 
     let image;
 
@@ -44,12 +45,17 @@ const MovieCard = ({movie, imageFirestore}) => {
        
             let moviesReference = [];
             let moviesInWatchListHelper = [...moviesInWatchList];
+            // /Disney-website/ contiene 16 caracteres
+            // http:// contiene 7 caracteres, pero no hace falta contemplarlo.
+            const lengthToCutURL = URL.length -16;
             moviesInWatchListHelper.forEach(link => {
-                moviesReference.push(link.slice(21))}
+                
+                moviesReference.push(link.slice(lengthToCutURL))}
             )
             if(moviesReference.indexOf(image) >= 0){
                 setShouldPlaceCheckedSVG("yes");
             }
+            console.log(moviesReference)
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldPlaceCheckedSVG, moviesInWatchList])

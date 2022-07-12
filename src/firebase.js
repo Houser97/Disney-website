@@ -103,7 +103,7 @@ export const recoverDoc = async(userID) => {
     //console.log("document data:", docSnap.data())
     return docSnap.data();
   } else {
-    //console.log("no such document")
+    console.log("no such document")
   }
 
 }
